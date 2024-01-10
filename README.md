@@ -2,25 +2,25 @@
 
 > Momentum 크롬 앱 클론 프로젝트  
 > <링크>
-> <br>
+<br>
 
 ## 1. 제작 기간
 
 - 2024-01-10 ~ 2024-01-xx
-  <br>
+<br>
 
 ## 2. 사용 기술
 
 - HTML5
 - CSS
 - JavaScript
-  <br>
+<br>
 
 ## 3. 프로젝트 목표
 
 - HTML5, CSS, JavaScript의 기초를 공부해보며 배웠던 지식들을 활용하여 Momentum 클론 프로젝트 진행.
 - 날씨API를 이용하여 웹 사이트에 구현해보기(API사이트 : https://openweathermap.org/api).
-  <br>
+<br>
 
 ## 4. 주요 기능
 
