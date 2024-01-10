@@ -1,0 +1,11 @@
+body{
+    background-size: cover;
+}
+
+.active{
+    color: tomato;
+}
+
+.hidden{
+    display: none;
+}
