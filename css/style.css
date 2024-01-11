@@ -1,5 +1,10 @@
-body{
-    background-size: cover;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+@import "reset.css";
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    color:#2F363E;
 }
 
 .active{
@@ -8,4 +13,24 @@ body{
 
 .hidden{
     display: none;
+}
+
+@keyframes loadBackground{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
+.background-container img{
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    position: absolute;
+
+    animation: loadBackground 0.3s ease-in-out forwards;
 }
