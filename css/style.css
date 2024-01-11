@@ -3,12 +3,10 @@
 @import "reset.css";
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    color:#2F363E;
-}
+    font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+    color:#05080c;
 
-.active{
-    color: tomato;
+    height: 100vh;
 }
 
 .hidden{
@@ -26,11 +24,66 @@ body {
     }
 }
 
+.background-container{
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    position:absolute;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: loadBackground 0.3s ease-in-out forwards;
+}
+
 .background-container img{
     height: 100vh;
     width: 100vw;
-    top: 0;
-    position: absolute;
+}
 
-    animation: loadBackground 0.3s ease-in-out forwards;
+.center{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#clock{
+    font-size: 180px;
+    /* font-weight: bold; */
+    color: white;
+}
+
+.clock-container{
+    margin-bottom: 20px;
+    z-index: 3;
+}
+
+.login-greeting-container{
+    z-index: 3;
+}
+
+#login-form input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 5px solid white;
+
+    color: white;
+    
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#login-form input::placeholder{
+    color: white;
+    font-style: italic;
+}
+
+#greeting{
+    font-size: 60px;
+    /* font-weight: 600; */
+    color: white;
 }

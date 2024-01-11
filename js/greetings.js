@@ -16,7 +16,27 @@ function onLoginSubmit(event)
 function showGreeting()
 {
     const username = localStorage.getItem(USER_NAME_KEY);
-    greeting.innerText = `Hello ${username}`;
+
+    const date = new Date();
+    const hour = date.getHours();
+
+    if(hour >= 5 && hour < 12)
+    {
+        greeting.innerText = `Good morning, ${username}`;
+    }
+    else if(hour >= 12 && hour < 18)
+    {
+        greeting.innerText = `Good afternoon, ${username}`;
+    }
+    else if(hour >= 18 && hour < 22)
+    {
+        greeting.innerText = `Good evening, ${username}`;
+    }
+    else
+    {
+        greeting.innerText = `Good night, ${username}`;
+    }
+
     greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
