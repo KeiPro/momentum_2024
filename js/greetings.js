@@ -3,7 +3,7 @@ const loginInput = loginForm.querySelector("#login-form input");
 const greeting = document.querySelector("#greeting");
 
 const HIDDEN_CLASSNAME = "hidden";
-const USER_NAME_KEY = "username";
+export const USER_NAME_KEY = "username";
 
 function onLoginSubmit(event)
 {
@@ -11,6 +11,8 @@ function onLoginSubmit(event)
     loginForm.classList.add(HIDDEN_CLASSNAME);   
     localStorage.setItem(USER_NAME_KEY, loginInput.value);
     showGreeting();
+
+    document.dispatchEvent(new CustomEvent('loginSuccess'));
 }
 
 function showGreeting()

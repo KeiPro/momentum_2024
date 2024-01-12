@@ -10,7 +10,7 @@ body {
 }
 
 .hidden{
-    display: none;
+    display: none !important;
 }
 
 @keyframes loadBackground{
@@ -80,10 +80,52 @@ body {
 #login-form input::placeholder{
     color: white;
     font-style: italic;
+
+    transition: color 0.3s ease-in-out;
 }
+
+/* 포커스 상태에서의 placeholder 스타일 */
+#login-form input:focus::placeholder {
+    color: transparent;
+  }
 
 #greeting{
     font-size: 60px;
     /* font-weight: 600; */
     color: white;
+}
+
+.main-goal-container{
+    margin-top: 150px;
+    z-index: 3;
+}
+
+.main-goal-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-goal-container span{
+    font-size: 40px;
+    color: white;
+}
+
+.main-goal-container span:last-child{
+    margin-top: 20px;
+}
+
+#main-goal-form{
+    margin-top: 10px;
+}
+
+#main-goal-form input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 5px solid white;
+
+    color: white;
+    
+    font-size: 40px;
+    text-align: center;
 }

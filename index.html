@@ -23,14 +23,15 @@
           />
         </form>
       </div>
+      <div class="main-goal-container">
+        <span class="main-goal-title">What is your main goal for today?</span>
+        <form id="main-goal-form">
+          <input type="text" required />
+        </form>
+        <span class="main-goal hidden">후회 없는 하루 보내기</span>
+      </div>
     </div>
-    <form id="todo-form">
-      <input
-        type="text"
-        placeholder="Write a TO DO and Press Enter."
-        required
-      />
-    </form>
+
     <ul id="todo-list"></ul>
     <div id="quote">
       <span></span>
@@ -41,10 +42,11 @@
       <span></span>
     </div>
 
-    <script src="js/greetings.js"></script>
+    <script type="module" src="js/greetings.js"></script>
     <script src="js/clock.js"></script>
     <script src="js/quotes.js"></script>
     <script src="js/background.js"></script>
+    <script type="module" src="js/maingoal.js"></script>
     <script src="js/todo.js"></script>
     <script src="js/weather.js"></script>
   </body>
