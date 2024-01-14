@@ -26,7 +26,7 @@ body {
 
 .background-container{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     z-index: 1;
     position:absolute;
 
@@ -38,8 +38,8 @@ body {
 }
 
 .background-container img{
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
 }
 
 .center{
@@ -48,21 +48,27 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    position: relative;
+
+    /* TODO : 로그인 성공 시 애니메이션 적용하기. */
+    top: 120px; 
 }
 
 #clock{
-    font-size: 180px;
-    /* font-weight: bold; */
+    font-size: 130px;
     color: white;
 }
 
-.clock-container{
-    margin-bottom: 20px;
+.clock-container,
+.login-greeting-container,
+.main-goal-container{
     z-index: 3;
 }
 
-.login-greeting-container{
-    z-index: 3;
+.clock-container
+{
+    margin-bottom: 10px;
 }
 
 #login-form input{
@@ -90,24 +96,23 @@ body {
   }
 
 #greeting{
-    font-size: 60px;
+    font-size: 50px;
     /* font-weight: 600; */
     color: white;
 }
 
 .main-goal-container{
-    margin-top: 150px;
-    z-index: 3;
-}
 
-.main-goal-container{
+    margin: 80px 0px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .main-goal-container span{
-    font-size: 40px;
+    font-size: 28px;
     color: white;
 }
 
@@ -122,10 +127,10 @@ body {
 #main-goal-form input{
     background-color: rgba(255, 255, 255, 0);
     border: none;
-    border-bottom: 5px solid white;
+    border-bottom: 3px solid white;
 
     color: white;
     
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
 }

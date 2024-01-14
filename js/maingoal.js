@@ -43,9 +43,10 @@ function switchMainGoalState(hasMainGoal)
 
 function showMainGoalTitle(hasMainGoal)
 {
+    console.log("hasMainGoal");
     if(hasMainGoal)
     {
-        mainGoalTitle.innerText = "You've got this in the bag!";
+        mainGoalTitle.innerText = "Today";
     }
     else
     {
@@ -76,5 +77,7 @@ if(savedMainGoal !== null)
 }
 else
 {
+    showMainGoalTitle(false);
+
     mainGoalForm.addEventListener("submit", handleMainGoalSubmit);
 }
