@@ -6,7 +6,7 @@ const COMPLETE_GOAL_KEY = "main_goal_complete";
 const mainGoalContainer = document.querySelector(".main-goal-container");
 const mainGoalForm = document.getElementById("main-goal-form");
 const mainGoalInput = mainGoalForm.querySelector("input");
-const textMeasure = mainGoalForm.querySelector("#text-measure");
+const textMeasure = mainGoalForm.querySelector(".main-goal__text-measure");
 
 const mainGoalTitle = document.querySelector(".main-goal-title");
 const mainGoalText = document.querySelector(".main-goal");
@@ -72,9 +72,13 @@ function showMainGoalTitle(hasMainGoal)
 
 function updateInputWidth()
 {
-    const baseWidth = 400; // 기본 너비
+    const minWidth = 400; // 기본 너비
+    const maxWidth = 1200;
     textMeasure.textContent = mainGoalInput.value;
-    const newWidth = textMeasure.offsetWidth < baseWidth ? baseWidth : textMeasure.offsetWidth; // 여백 추가
+
+    const textWidth = textMeasure.offsetWidth;
+    const newWidth = Math.max(minWidth, Math.min(textWidth, maxWidth));
+    
     mainGoalInput.style.width = newWidth + 'px';
 }
 

@@ -29,7 +29,11 @@
     text-align: center;
 }
 
-#main-goal-form #text-measure{
+.main-goal-container .main-goal__text-measure{
+    visibility: hidden;
+    position: absolute; 
+    left: 0;
+
     font-size: 30px;
 }
 
