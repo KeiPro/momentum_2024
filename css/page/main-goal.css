@@ -1,0 +1,72 @@
+.main-goal-container{
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+.main-goal-container span{
+    font-size: 28px;
+    color: white;
+}
+
+#main-goal-form{
+    margin-top: 10px;
+}
+
+#main-goal-form input{
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 3px solid white;
+
+    color: white;
+    
+    font-size: 30px;
+    text-align: center;
+}
+
+.main-goal-item{
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+.main-goal-container .check-box {
+    opacity: 0;
+
+    position: absolute;
+    left: -40px;
+
+    width: 25px;
+    height: 25px;
+    border: 2px solid white;
+    border-radius: 4px;
+    appearance: none;
+    background-color: rgba(10, 10, 10, 0.6);
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.main-goal-container:hover .check-box {
+    opacity : 1;
+    visibility: visible;
+}
+
+.check-box:checked::after {
+    content: '\2714'; /* 체크 마크 유니코드 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; /* 텍스트 색상 */
+    font-size: 16px; /* 텍스트 크기 */
+}
+

@@ -1,0 +1,20 @@
+#quote-container{
+    display:flex;
+    height: 5%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+
+    bottom: -20px;
+}
+
+#quote-container span {
+    pointer-events:none;
+    font-size: 20px;
+    color: white;
+    text-align: center;
+
+    transition: all 0.5s ease-in-out;
+}

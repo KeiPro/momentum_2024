@@ -1,0 +1,29 @@
+@keyframes loadBackground{
+    from
+    {
+        opacity: 0;
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+
+.background-container{
+    height: 100vh;
+    width: 100%;
+    position:absolute;
+
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    animation: loadBackground 0.3s ease-in-out forwards;
+}
+
+.background-container img{
+    height: 100vh;
+    width: 100%;
+}

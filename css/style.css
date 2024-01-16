@@ -2,6 +2,11 @@
 
 @import "reset.css";
 
+@import "page/background.css";
+@import "page/main-goal.css";
+@import "page/quote.css";
+@import "page/screen-center.css";
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
     color:#05080c;
@@ -11,136 +16,4 @@ body {
 
 .hidden{
     display: none !important;
-}
-
-@keyframes loadBackground{
-    from
-    {
-        opacity: 0;
-    }
-    to
-    {
-        opacity: 1;
-    }
-}
-
-.background-container{
-    height: 100vh;
-    width: 100%;
-    position:absolute;
-
-    z-index: 1;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    animation: loadBackground 0.3s ease-in-out forwards;
-}
-
-.background-container img{
-    height: 100vh;
-    width: 100%;
-}
-
-.center{
-    height: 55%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-
-    position: relative;
-    z-index: 2;
-}
-
-#clock{
-    font-size: 130px;
-    color: white;
-}
-
-#login-form input{
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    border-bottom: 5px solid white;
-
-    color: white;
-    
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-}
-
-#login-form input::placeholder{
-    color: white;
-    font-style: italic;
-
-    transition: color 0.3s ease-in-out;
-}
-
-/* 포커스 상태에서의 placeholder 스타일 */
-#login-form input:focus::placeholder {
-    color: transparent;
-  }
-
-#greeting{
-    font-size: 50px;
-    /* font-weight: 600; */
-    color: white;
-}
-
-.main-goal-container{
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-    z-index: 2;
-}
-
-.main-goal-container span{
-    font-size: 28px;
-    color: white;
-}
-
-.main-goal-container span:last-child{
-    margin-top: 20px;
-}
-
-#main-goal-form{
-    margin-top: 10px;
-}
-
-#main-goal-form input{
-    background-color: rgba(255, 255, 255, 0);
-    border: none;
-    border-bottom: 3px solid white;
-
-    color: white;
-    
-    font-size: 30px;
-    text-align: center;
-}
-
-#quote-container{
-    display:flex;
-    height: 13%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 2;
-
-    bottom: -40px;
-}
-
-#quote-container span {
-    pointer-events:none;
-    font-size: 20px;
-    color: white;
-    text-align: center;
-
-    transition: all 0.5s ease-in-out;
 }

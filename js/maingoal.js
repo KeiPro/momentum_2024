@@ -7,6 +7,8 @@ const mainGoalForm = document.getElementById("main-goal-form");
 const mainGoalInput = mainGoalForm.querySelector("input");
 const mainGoalTitle = document.querySelector(".main-goal-title");
 const mainGoalText = document.querySelector(".main-goal");
+const mainGoalItem = mainGoalContainer.querySelector(".main-goal-item");
+const mainGoalCheckBox = mainGoalItem.querySelector(".check-box");
 
 const HIDDEN_CLASSNAME = "hidden";
 
@@ -22,7 +24,7 @@ function handleMainGoalSubmit(event)
     //main-goal 변경.
     const newMainGoal = mainGoalInput.value;
     mainGoalText.innerText = newMainGoal;
-
+    
     //main-goal 데이터 저장.
     localStorage.setItem(MAIN_GOAL_KEY, newMainGoal);
 }
@@ -33,17 +35,18 @@ function switchMainGoalState(hasMainGoal)
     {
         mainGoalForm.classList.add(HIDDEN_CLASSNAME);
         mainGoalText.classList.remove(HIDDEN_CLASSNAME);
+        mainGoalItem.classList.remove(HIDDEN_CLASSNAME);
     }
     else
     {
         mainGoalForm.classList.remove(HIDDEN_CLASSNAME);
         mainGoalText.classList.add(HIDDEN_CLASSNAME);
+        mainGoalItem.classList.add(HIDDEN_CLASSNAME);
     }
 }
 
 function showMainGoalTitle(hasMainGoal)
 {
-    console.log("hasMainGoal");
     if(hasMainGoal)
     {
         mainGoalTitle.innerText = "Today";
@@ -53,6 +56,8 @@ function showMainGoalTitle(hasMainGoal)
         mainGoalTitle.innerText = "What is your main goal for today?";
     }
 }
+
+//---------------------------------------------------------------------------------//
 
 const savedUserName = localStorage.getItem(USER_NAME_KEY);
 if(savedUserName === null)
@@ -81,3 +86,12 @@ else
 
     mainGoalForm.addEventListener("submit", handleMainGoalSubmit);
 }
+
+mainGoalCheckBox.addEventListener('change', function(){
+    const todoText = this.nextElementSibling;
+    if(this.checked) {
+        todoText.style.textDecoration = 'line-through';
+    }else {
+        todoText.style.textDecoration = 'none';
+    }
+})
