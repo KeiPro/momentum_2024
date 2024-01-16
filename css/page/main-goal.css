@@ -19,14 +19,18 @@
 }
 
 #main-goal-form input{
+    width: 400px;
     background-color: rgba(255, 255, 255, 0);
     border: none;
     border-bottom: 3px solid white;
 
     color: white;
-    
     font-size: 30px;
     text-align: center;
+}
+
+#main-goal-form #text-measure{
+    font-size: 30px;
 }
 
 .main-goal-item{

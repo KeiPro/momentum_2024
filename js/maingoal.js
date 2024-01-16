@@ -6,6 +6,8 @@ const COMPLETE_GOAL_KEY = "main_goal_complete";
 const mainGoalContainer = document.querySelector(".main-goal-container");
 const mainGoalForm = document.getElementById("main-goal-form");
 const mainGoalInput = mainGoalForm.querySelector("input");
+const textMeasure = mainGoalForm.querySelector("#text-measure");
+
 const mainGoalTitle = document.querySelector(".main-goal-title");
 const mainGoalText = document.querySelector(".main-goal");
 
@@ -68,13 +70,22 @@ function showMainGoalTitle(hasMainGoal)
     }
 }
 
+function updateInputWidth()
+{
+    const baseWidth = 400; // 기본 너비
+    textMeasure.textContent = mainGoalInput.value;
+    const newWidth = textMeasure.offsetWidth < baseWidth ? baseWidth : textMeasure.offsetWidth; // 여백 추가
+    mainGoalInput.style.width = newWidth + 'px';
+}
+
 function editMainGoal()
 {
     showMainGoalTitle(false);
     toggleMainGoalDisplay(false);
 
     mainGoalInput.focus();
-
+    updateInputWidth();
+    mainGoalInput.addEventListener('input', updateInputWidth);
     mainGoalForm.addEventListener("submit", handleMainGoalSubmit);
 }
 
@@ -133,6 +144,6 @@ if(savedUserName !== null)
 else
 {
     mainGoalContainer.classList.add(HIDDEN_CLASSNAME);
-    document.addEventListener('loginSuccess', loginSuccess());
+    document.addEventListener('loginSuccess', loginSuccess);
 }
 
