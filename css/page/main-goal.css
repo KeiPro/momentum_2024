@@ -38,7 +38,7 @@
     margin-top: 20px;
 }
 
-.main-goal-container .check-box {
+.main-goal-item .check-box {
     opacity: 0;
 
     position: absolute;
@@ -52,7 +52,7 @@
     background-color: rgba(10, 10, 10, 0.6);
     cursor: pointer;
 
-    transition: all 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .main-goal-container:hover .check-box {
@@ -68,5 +68,25 @@
     transform: translate(-50%, -50%);
     color: white; /* 텍스트 색상 */
     font-size: 16px; /* 텍스트 크기 */
+}
+
+.main-goal-edit {
+    opacity: 0;
+
+    position: absolute;
+    right: -40px;
+
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none; /* 포커스시 나타나는 윤곽선 제거 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+
+    transition: all 0.3s ease-in-out;
+}
+
+.main-goal-container:hover .main-goal-edit {
+    opacity : 1;
+    visibility: visible;
 }
 
