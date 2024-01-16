@@ -22,7 +22,7 @@ function handleMainGoalSubmit(event)
 
     //main-goal-title의 문구 변경.
     showMainGoalTitle(true);
-    switchMainGoalState(true);
+    toggleMainGoalDisplay(true);
 
     //main-goal 변경.
     const newMainGoal = mainGoalInput.value;
