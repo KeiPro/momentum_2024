@@ -1,0 +1,47 @@
+.sub-to-do-list{
+    position: relative;
+    z-index: 2;
+}
+
+.sub-to-do-list span{
+    position: absolute;
+
+    bottom: 10px;
+    right: 50px;
+
+    color: rgba(255,255,255, 0.7);
+    font-size: 20px;
+
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+}
+
+.sub-to-do-list span:hover{
+    color: rgba(255,255,255, 1.0);
+}
+
+.to-do-list__container{
+    opacity: 0; /* 기본적으로 완전 불투명 */
+    transition: opacity 0.2s ease-in-out; /* 투명도와 가시성 변경에 대한 전환 효과 */
+
+    width: 300px;
+    height: 250px;
+    background-color: white;
+
+    position: absolute;
+    border-radius: 5px;
+
+    bottom: 50px;
+    right: 50px;
+}
+
+.to-do-list__container:after { 
+    border-top: 10px solid white; 
+    border-left: 10px solid transparent; 
+    border-right: 10px solid transparent; 
+    border-bottom: 10px solid transparent; 
+    content:""; 
+    position:absolute;
+    bottom: -20px;
+    right: 20px;  
+}

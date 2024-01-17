@@ -56,7 +56,7 @@ author.innerText = quotes[todayQuote].author;
 
 function handleQuoteHover()
 {
-    author.classList.toggle("hidden");
+    author.classList.toggle(HIDDEN_CLASSNAME);
 }
 
 quoteContainer.addEventListener("mouseenter", handleQuoteHover);

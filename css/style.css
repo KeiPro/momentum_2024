@@ -6,6 +6,7 @@
 @import "page/main-goal.css";
 @import "page/quote.css";
 @import "page/screen-center.css";
+@import "page/sub-to-do-list.css";
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
@@ -16,4 +17,5 @@ body {
 
 .hidden{
     display: none !important;
+    opacity: 0;
 }
