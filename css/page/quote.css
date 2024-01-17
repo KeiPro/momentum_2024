@@ -1,13 +1,15 @@
 #quote-container{
     display:flex;
     height: 5%;
+    width: 60%;
+    margin: 0 auto;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
     position: relative;
     z-index: 2;
-
-    bottom: -20px;
 }
 
 #quote-container span {
