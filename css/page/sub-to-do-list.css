@@ -22,7 +22,9 @@
 
 .to-do-list__container{
     opacity: 0; /* 기본적으로 완전 불투명 */
-    transition: opacity 0.2s ease-in-out; /* 투명도와 가시성 변경에 대한 전환 효과 */
+    transform : translateY(10px) scale(0.95); /*초기위치*/
+
+    transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
 
     width: 300px;
     height: 250px;
