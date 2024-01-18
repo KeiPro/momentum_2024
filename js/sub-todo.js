@@ -1,4 +1,4 @@
-const todoButton = document.querySelector(".sub-to-do-list > span")
+const todoButton = document.querySelector(".stdl__toggle")
 const todoListContainer = document.querySelector('.to-do-list__container');
 
 const HIDDEN_CLASSNAME = "hidden";
@@ -31,4 +31,5 @@ function toggleToDoList()
     }
 }
 
+toggleToDoList(); // 테스트를 위해 임시로 호출해주고 있음.
 todoButton.addEventListener('click', toggleToDoList);

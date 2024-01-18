@@ -3,7 +3,7 @@
     z-index: 2;
 }
 
-.sub-to-do-list span{
+.sub-to-do-list .stdl__toggle{
     position: absolute;
 
     bottom: 10px;
@@ -16,7 +16,7 @@
     transition: color 0.2s ease-in-out;
 }
 
-.sub-to-do-list span:hover{
+.sub-to-do-list .stdl__toggle:hover{
     color: rgba(255,255,255, 1.0);
 }
 
@@ -32,6 +32,7 @@
 
     position: absolute;
     border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5);
 
     bottom: 50px;
     right: 50px;
@@ -46,4 +47,54 @@
     position:absolute;
     bottom: -20px;
     right: 20px;  
+}
+
+.stdl__bottom{
+    position: absolute;
+    bottom: 0px;
+    height: 15%;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* background-color: black; */
+}
+
+.stdl__add-button{
+    width: 80%;
+    height: 60%;
+
+    border-radius: 20px;
+    background-color: #495057;
+    box-shadow: 0 5px #999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* transition: all 0.2s ease-in-out; */
+}
+
+.stdl__add-button i{
+    color: white;
+    /* box-shadow: 0px 0px 5px grey; */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stdl__add-button:hover{
+    background-color: #5e6266;
+}
+
+.stdl__add-button:active{
+    background-color: #bcc0c4;
+    box-shadow: 0 0px #666;
+    transform: translateY(4px);
 }
