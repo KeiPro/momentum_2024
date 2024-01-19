@@ -35,6 +35,7 @@ function toggleTodoButton()
 }
 
 function handleOutsideClick(event) {
+    
     if (event.target !== currEditingText) {
         currEditingText.setAttribute('contenteditable', 'false');
         currEditingText.blur();
@@ -42,6 +43,7 @@ function handleOutsideClick(event) {
         
         currEditingText = null;
     }
+    
 }
 
 function addTodoList()
@@ -80,9 +82,17 @@ function addTodoList()
         }
     });
 
-    // 펜 아이콘 (i 태그) 생성
-    // const penIcon = document.createElement('i');
-    // penIcon.classList.add('fa-regular', 'fa-pen-to-square');
+    todoText.addEventListener('focus', function(){
+        const range = document.createRange();
+        const selection = window.getSelection();
+        console.log(selection);
+
+        range.selectNodeContents(this); // 텍스트 내용을 범위로 선택
+        range.collapse(false); // 범위의 끝(텍스트의 끝)으로 collapse
+
+        selection.removeAllRanges(); // 기존 선택 범위 제거
+        selection.addRange(range); // 새 범위를 선택 범위로 추가
+    });
 
     // X 아이콘 (i 태그) 생성
     const xIcon = document.createElement('i');
