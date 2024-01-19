@@ -26,13 +26,14 @@
 
     transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
 
-    width: 300px;
+    width: 370px;
     height: 250px;
     background-color: white;
 
     position: absolute;
     border-radius: 5px;
     box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.5);
+    border: 2px solid #495057;
 
     bottom: 50px;
     right: 50px;
@@ -58,8 +59,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* background-color: black; */
 }
 
 .stdl__add-button{
@@ -79,7 +78,7 @@
 
 .stdl__add-button i{
     color: white;
-    /* box-shadow: 0px 0px 5px grey; */
+    
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -97,4 +96,42 @@
     background-color: #bcc0c4;
     box-shadow: 0 0px #666;
     transform: translateY(4px);
+}
+
+#todo-list{
+    padding: 20px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    font-size: 16px;
+}
+
+.todo-text {
+    outline: none;
+
+     /* 남은 공간을 채움 */
+    flex-grow: 1;
+     /* 긴 단어가 넘칠 경우 줄바꿈 */
+    overflow-wrap: break-word;
+    margin-right: auto;
+}
+
+.todo-text[contenteditable="true"]
+{
+    opacity: 0.5;
+}
+
+.todo-text:hover{
+    cursor: default;
+}
+
+.todo-item input,
+.todo-item i,
+.stdl__add-button{
+    cursor: pointer;
 }
