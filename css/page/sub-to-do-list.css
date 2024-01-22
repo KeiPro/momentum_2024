@@ -113,6 +113,7 @@
 
 .todo-text {
     outline: none;
+    min-height: 20px;
 
      /* 남은 공간을 채움 */
     flex-grow: 1;

@@ -35,7 +35,6 @@ function toggleTodoButton()
 }
 
 function handleOutsideClick(event) {
-    
     if (event.target !== currEditingText) {
         currEditingText.setAttribute('contenteditable', 'false');
         currEditingText.blur();
@@ -43,7 +42,13 @@ function handleOutsideClick(event) {
         
         currEditingText = null;
     }
-    
+}
+
+function makeEditable(editText) {
+    editText.setAttribute('contenteditable', 'true');
+    editText.focus();
+    document.addEventListener('click', handleOutsideClick);
+    currEditingText = editText;
 }
 
 function addTodoList()
@@ -61,8 +66,8 @@ function addTodoList()
     const todoText = document.createElement('span');
     todoText.classList.add('todo-text');
     todoText.setAttribute('contenteditable', 'false');
-    todoText.textContent = 'fasdfadsfasdf';
-
+    todoText.textContent = ' ';
+    
     todoText.addEventListener('dblclick', function(){
         this.setAttribute('contenteditable', 'true');
         this.focus();
@@ -85,7 +90,6 @@ function addTodoList()
     todoText.addEventListener('focus', function(){
         const range = document.createRange();
         const selection = window.getSelection();
-        console.log(selection);
 
         range.selectNodeContents(this); // 텍스트 내용을 범위로 선택
         range.collapse(false); // 범위의 끝(텍스트의 끝)으로 collapse
@@ -107,6 +111,10 @@ function addTodoList()
     // ul에 새로운 li 요소 추가
     const todoList = document.getElementById('todo-list');
     todoList.appendChild(todoItem);
+
+    setTimeout(() => {
+        makeEditable(todoText);
+    }, 0);
 }
 
 toggleTodoButton(); // 테스트를 위해 임시로 호출해주고 있음.
