@@ -36,6 +36,23 @@ function toggleTodoButton()
     }
 }
 
+function changeCheckBoxState(event)
+{
+    const liTag = event.target.parentNode;
+    const targetIndex = toDos.findIndex(item => item.id === parseInt(liTag.id));
+    const todoText = event.target.nextElementSibling;
+    if(this.checked) {
+        todoText.style.textDecoration = 'line-through';
+        toDos[targetIndex].complete = "true";
+    }else {
+        todoText.style.textDecoration = 'none';
+        toDos[targetIndex].complete = "false";
+    }
+
+    saveToDo();
+}
+
+
 function filterToDo(arrayID, liTagID)
 {
     return arrayID !== liTagID;
@@ -98,23 +115,8 @@ function updateToDosArray(parentId, newTextContent)
     saveToDo();
 }
 
-function paintTodo(newToDo)
+function addTodoTextEventListener(todoText)
 {
-    const todoItem = document.createElement('li');
-    todoItem.classList.add('todo-item');
-    todoItem.id = newToDo.id;
-    newLITag = todoItem;
-
-    const checkBox = document.createElement('input');
-    checkBox.setAttribute('type', 'checkbox');
-    checkBox.classList.add('check-box');
-
-    const todoText = document.createElement('span');
-    todoText.classList.add('todo-text');
-    todoText.setAttribute('contenteditable', 'false');
-    todoText.textContent = newToDo.text;
-    currEditingText = todoText;
-
     todoText.addEventListener('dblclick', function(){
         this.setAttribute('contenteditable', 'true');
         this.focus();
@@ -145,6 +147,34 @@ function paintTodo(newToDo)
         selection.removeAllRanges(); // 기존 선택 범위 제거
         selection.addRange(range); // 새 범위를 선택 범위로 추가
     });
+}
+
+function paintTodo(newToDo)
+{
+    const todoItem = document.createElement('li');
+    todoItem.classList.add('todo-item');
+    todoItem.id = newToDo.id;
+    newLITag = todoItem;
+
+    const checkBox = document.createElement('input');
+    checkBox.setAttribute('type', 'checkbox');
+    checkBox.classList.add('check-box');
+    checkBox.addEventListener('change', changeCheckBoxState);
+    
+    const todoText = document.createElement('span');
+    todoText.classList.add('todo-text');
+    todoText.setAttribute('contenteditable', 'false');
+    todoText.textContent = newToDo.text;
+    currEditingText = todoText;
+    
+    const isComplete = newToDo.complete === "true";
+    checkBox.checked = isComplete;
+    if(isComplete)
+        todoText.style.textDecoration = 'line-through';
+    else
+        todoText.style.textDecoration = 'none';
+
+    addTodoTextEventListener(todoText);
 
     // X 아이콘 (i 태그) 생성
     const xIcon = document.createElement('i');
@@ -164,8 +194,9 @@ function paintTodo(newToDo)
 function addTodoList()
 {
     const newTodo = {
+        id:Date.now(),
         text:'',
-        id:Date.now()
+        complete:"false",
     }
 
     toDos.push(newTodo);
