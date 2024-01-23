@@ -36,6 +36,20 @@ function toggleTodoButton()
     }
 }
 
+function filterToDo(arrayID, liTagID)
+{
+    return arrayID !== liTagID;
+}
+
+function deleteToDo(event)
+{
+    const liTag = event.target.parentNode;
+    liTag.remove();
+    //toDos = toDos.filter((item) => item.id !== parseInt(liTag.id));
+    toDos = toDos.filter(item => filterToDo(item.id, parseInt(liTag.id)));
+    saveToDo();
+}
+
 function saveToDo()
 {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
@@ -135,6 +149,7 @@ function paintTodo(newToDo)
     // X 아이콘 (i 태그) 생성
     const xIcon = document.createElement('i');
     xIcon.classList.add('fa-regular', 'fa-x');
+    xIcon.addEventListener('click', deleteToDo);
 
     // li 요소에 자식 요소들 추가
     todoItem.appendChild(checkBox);
