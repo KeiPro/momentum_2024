@@ -1,11 +1,13 @@
 const todoButton = document.querySelector(".stdl__toggle")
 const todoListContainer = document.querySelector('.to-do-list__container');
-
 const addListButton = todoListContainer.querySelector('.stdl__add-button');
 
+const TODOS_KEY = "todos";
 const HIDDEN_CLASSNAME = "hidden";
+
 let isToggleChanging = false;
 let currEditingText = null;
+let toDos = [];
 
 function toggleTodoButton()
 {
@@ -34,56 +36,88 @@ function toggleTodoButton()
     }
 }
 
+function saveToDo()
+{
+    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+}
+
 function handleOutsideClick(event) {
-    if (event.target !== currEditingText) {
+    if (event.target === currEditingText)
+        return; 
+
+    const newTodoIsEmpty = currEditingText.textContent === "" && newLITag !== null;
+    if(newTodoIsEmpty)
+    {
+        newLITag.remove();
+        newLITag = null;
+    }
+    else
+    {
+        updateToDosArray(currEditingText.parentElement.id, currEditingText.textContent);
+    }
+
+    disableEditingMode();
+}
+
+function disableEditingMode() {
+    if (currEditingText) {
         currEditingText.setAttribute('contenteditable', 'false');
         currEditingText.blur();
-        document.removeEventListener('click', handleOutsideClick); // 포커스 해제 시 리스너 제거
-        
         currEditingText = null;
     }
+
+    document.removeEventListener('click', handleOutsideClick);
 }
 
 function makeEditable(editText) {
     editText.setAttribute('contenteditable', 'true');
     editText.focus();
     document.addEventListener('click', handleOutsideClick);
-    currEditingText = editText;
 }
 
-function addTodoList()
+function updateToDosArray(parentId, newTextContent)
 {
-    // 새로운 li 요소 생성
+    const liTagID = parseInt(parentId, 10);
+    const index = toDos.findIndex(todo => todo.id === liTagID);
+    toDos[index].text = newTextContent;
+
+    saveToDo();
+}
+
+function paintTodo(newToDo)
+{
     const todoItem = document.createElement('li');
     todoItem.classList.add('todo-item');
+    todoItem.id = newToDo.id;
+    newLITag = todoItem;
 
-    // 체크박스 (input 태그) 생성
     const checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
     checkBox.classList.add('check-box');
 
-    // 텍스트 (span 태그) 생성
     const todoText = document.createElement('span');
     todoText.classList.add('todo-text');
     todoText.setAttribute('contenteditable', 'false');
-    todoText.textContent = ' ';
-    
+    todoText.textContent = newToDo.text;
+    currEditingText = todoText;
+
     todoText.addEventListener('dblclick', function(){
         this.setAttribute('contenteditable', 'true');
         this.focus();
         document.addEventListener('click', handleOutsideClick);
 
         currEditingText = this;
+        newLITag = null;
     });
 
     todoText.addEventListener('keydown', function(event){
-        if (event.key === 'Enter') { // 엔터 키의 키 코드는 13
-            this.setAttribute('contenteditable', 'false');
-            this.blur(); // 포커스 해제
-            document.removeEventListener('click', handleOutsideClick);
-            event.preventDefault(); // 엔터 키 기본 동작(줄바꿈 등) 방지
+        if (event.key === 'Enter') {
+            event.preventDefault();
 
-            currEditingText = null;
+            updateToDosArray(this.parentElement.id, this.textContent);
+            disableEditingMode();
+            
+            newLITag = null;
         }
     });
 
@@ -105,19 +139,36 @@ function addTodoList()
     // li 요소에 자식 요소들 추가
     todoItem.appendChild(checkBox);
     todoItem.appendChild(todoText);
-    // todoItem.appendChild(penIcon);
     todoItem.appendChild(xIcon);
 
     // ul에 새로운 li 요소 추가
     const todoList = document.getElementById('todo-list');
     todoList.appendChild(todoItem);
+}
+
+function addTodoList()
+{
+    const newTodo = {
+        text:'',
+        id:Date.now()
+    }
+
+    toDos.push(newTodo);
+    paintTodo(newTodo);
 
     setTimeout(() => {
-        makeEditable(todoText);
+        makeEditable(currEditingText);
     }, 0);
 }
 
 toggleTodoButton(); // 테스트를 위해 임시로 호출해주고 있음.
 todoButton.addEventListener('click', toggleTodoButton);
-
 addListButton.addEventListener('click', addTodoList);
+
+const savedTodos = localStorage.getItem(TODOS_KEY);
+if(savedTodos !== null)
+{
+    const parseTodos = JSON.parse(savedTodos);
+    toDos = parseTodos;
+    parseTodos.forEach(paintTodo);
+}
