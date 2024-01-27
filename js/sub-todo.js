@@ -1,3 +1,5 @@
+import { USER_NAME_KEY } from "./greetings.js";
+
 const todoButton = document.querySelector(".stdl__toggle")
 const todoListContainer = document.querySelector('.to-do-list__container');
 const addListButton = todoListContainer.querySelector('.stdl__add-button');
@@ -8,6 +10,7 @@ const HIDDEN_CLASSNAME = "hidden";
 let isToggleChanging = false;
 let currEditingText = null;
 let toDos = [];
+let newLITag;
 
 function toggleTodoButton()
 {
@@ -232,4 +235,19 @@ function init()
     }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+const savedUserName = localStorage.getItem(USER_NAME_KEY);
+if(savedUserName === null)
+{
+    todoButton.classList.add(HIDDEN_CLASSNAME);
+    document.addEventListener('loginSuccess', loginSuccess);
+}
+else
+{
+    document.addEventListener('DOMContentLoaded', init);
+}
+
+function loginSuccess()
+{
+    init();
+    todoButton.classList.remove(HIDDEN_CLASSNAME);
+}
