@@ -23,7 +23,7 @@ function toggleTodoButton()
             todoListContainer.style.opacity = '1';
             todoListContainer.style.transform = 'translateY(0) scale(1)';
             isToggleChanging = false;
-        }, 10); // display: none을 해제한 후 약간의 지연을 줍니다.
+        }, 10);
     }
     else
     {
@@ -32,7 +32,7 @@ function toggleTodoButton()
         setTimeout(() => {
             todoListContainer.classList.add(HIDDEN_CLASSNAME);
             isToggleChanging = false;
-        }, 100); // 500ms는 transition 시간과 일치해야 합니다.
+        }, 100);
     }
 }
 
@@ -76,11 +76,13 @@ function handleOutsideClick(event) {
     if (event.target === currEditingText)
         return; 
 
-    const newTodoIsEmpty = currEditingText.textContent === "" && newLITag !== null;
-    if(newTodoIsEmpty)
+    const newTextIsEmpty = currEditingText.textContent === "" && newLITag !== null;
+    if(newTextIsEmpty)
     {
         newLITag.remove();
         newLITag = null;
+
+        toDos = toDos.filter(item => filterToDo(item.id, parseInt(currEditingText.parentElement.id)));
     }
     else
     {
@@ -96,11 +98,21 @@ function disableEditingMode() {
         currEditingText.blur();
         currEditingText = null;
     }
-
+    disableOtherButton(false);
     document.removeEventListener('click', handleOutsideClick);
 }
 
+function disableOtherButton(disable)
+{
+    const buttons = document.querySelectorAll('.stdl__add-button, .check-box, .fa-regular');
+    buttons.forEach(button => {
+        button.style.pointerEvents = disable ? 'none' : 'auto';
+    });
+}
+
 function makeEditable(editText) {
+    disableOtherButton(true);
+
     editText.setAttribute('contenteditable', 'true');
     editText.focus();
     document.addEventListener('click', handleOutsideClick);
