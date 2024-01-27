@@ -16,17 +16,16 @@ function toggleTodoButton()
 
     isToggleChanging = true;
 
-    if(todoListContainer.classList.contains(HIDDEN_CLASSNAME))
-    {
+    const toggleOn = () => {
         todoListContainer.classList.remove(HIDDEN_CLASSNAME);
         setTimeout(() => {
             todoListContainer.style.opacity = '1';
             todoListContainer.style.transform = 'translateY(0) scale(1)';
             isToggleChanging = false;
         }, 10);
-    }
-    else
-    {
+    };
+
+    const toggleOff = () => {
         todoListContainer.style.opacity = '0';
         todoListContainer.style.transform = 'translateY(10px) scale(0.95)';
         setTimeout(() => {
@@ -34,6 +33,8 @@ function toggleTodoButton()
             isToggleChanging = false;
         }, 100);
     }
+
+    todoListContainer.classList.contains(HIDDEN_CLASSNAME) ? toggleOn() : toggleOff();
 }
 
 function changeCheckBoxState(event)
@@ -41,14 +42,10 @@ function changeCheckBoxState(event)
     const liTag = event.target.parentNode;
     const targetIndex = toDos.findIndex(item => item.id === parseInt(liTag.id));
     const todoText = event.target.nextElementSibling;
-    if(this.checked) {
-        todoText.style.textDecoration = 'line-through';
-        toDos[targetIndex].complete = "true";
-    }else {
-        todoText.style.textDecoration = 'none';
-        toDos[targetIndex].complete = "false";
-    }
+    const isChecked = event.target.checked;
 
+    todoText.style.textDecoration = isChecked ? 'line-through' : 'none';
+    toDos[targetIndex].complete = isChecked.toString();
     saveToDo();
 }
 
@@ -62,7 +59,6 @@ function deleteToDo(event)
 {
     const liTag = event.target.parentNode;
     liTag.remove();
-    //toDos = toDos.filter((item) => item.id !== parseInt(liTag.id));
     toDos = toDos.filter(item => filterToDo(item.id, parseInt(liTag.id)));
     saveToDo();
 }
@@ -219,14 +215,21 @@ function addTodoList()
     }, 0);
 }
 
-toggleTodoButton(); // 테스트를 위해 임시로 호출해주고 있음.
-todoButton.addEventListener('click', toggleTodoButton);
-addListButton.addEventListener('click', addTodoList);
-
-const savedTodos = localStorage.getItem(TODOS_KEY);
-if(savedTodos !== null)
+function initEventListener()
 {
-    const parseTodos = JSON.parse(savedTodos);
-    toDos = parseTodos;
-    parseTodos.forEach(paintTodo);
+    todoButton.addEventListener('click', toggleTodoButton);
+    addListButton.addEventListener('click', addTodoList);
 }
+
+function init()
+{
+    initEventListener();
+
+    const savedTodos = localStorage.getItem(TODOS_KEY);
+    if(savedTodos){
+        toDos = JSON.parse(savedTodos);
+        toDos.forEach(paintTodo);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', init);
