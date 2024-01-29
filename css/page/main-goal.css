@@ -74,8 +74,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: white; /* 텍스트 색상 */
-    font-size: 16px; /* 텍스트 크기 */
+    color: white;
+    font-size: 16px;
 }
 
 .main-goal-edit {

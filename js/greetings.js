@@ -1,6 +1,8 @@
 const loginForm = document.querySelector("#login-form");
 const loginInput = loginForm.querySelector("#login-form input");
-const greeting = document.querySelector("#greeting");
+const greetingText = document.querySelector("#greeting__text");
+const greetingContainer = document.querySelector("#greeting-container");
+const greetingEdit = document.querySelector(".greeting-edit");
 
 const HIDDEN_CLASSNAME = "hidden";
 export const USER_NAME_KEY = "username";
@@ -15,6 +17,14 @@ function onLoginSubmit(event)
     document.dispatchEvent(new CustomEvent('loginSuccess'));
 }
 
+function editUsername()
+{
+    greetingContainer.classList.add(HIDDEN_CLASSNAME);
+    loginForm.classList.remove(HIDDEN_CLASSNAME);
+
+    loginForm.addEventListener("submit", onLoginSubmit);
+}
+
 function showGreeting()
 {
     const username = localStorage.getItem(USER_NAME_KEY);
@@ -24,22 +34,23 @@ function showGreeting()
 
     if(hour >= 5 && hour < 12)
     {
-        greeting.innerText = `Good morning, ${username}`;
+        greetingText.innerText = `Good morning, ${username}`;
     }
     else if(hour >= 12 && hour < 18)
     {
-        greeting.innerText = `Good afternoon, ${username}`;
+        greetingText.innerText = `Good afternoon, ${username}`;
     }
     else if(hour >= 18 && hour < 22)
     {
-        greeting.innerText = `Good evening, ${username}`;
+        greetingText.innerText = `Good evening, ${username}`;
     }
     else
     {
-        greeting.innerText = `Good night, ${username}`;
+        greetingText.innerText = `Good night, ${username}`;
     }
 
-    greeting.classList.remove(HIDDEN_CLASSNAME);
+    greetingContainer.classList.remove(HIDDEN_CLASSNAME);
+    greetingEdit.addEventListener('click', editUsername);
 }
 
 const savedUsername = localStorage.getItem(USER_NAME_KEY);

@@ -38,8 +38,34 @@
     color: transparent;
 }
 
-#greeting{
+#greeting__text{
     font-size: 50px;
     /* font-weight: 600; */
     color: white;
+}
+
+.greeting-edit{
+    opacity: 0;
+
+    position: absolute;
+    right: -40px;
+
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none; /* 포커스시 나타나는 윤곽선 제거 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+
+    transition: all 0.3s ease-in-out;
+}
+
+#greeting-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#greeting-container:hover .greeting-edit {
+    opacity : 1;
+    visibility: visible;
 }
