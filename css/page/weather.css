@@ -1,0 +1,14 @@
+#weather-container{
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    z-index: 2;
+    top: 20px;
+    right: 20px;
+}
+
+#weather-container span{
+    color: white;
+    margin-bottom: 5px;
+}
