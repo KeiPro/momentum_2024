@@ -68,8 +68,8 @@
     visibility: visible;
 }
 
-.check-box:checked::after {
-    content: '\2714'; /* 체크 마크 유니코드 */
+.main-goal-item .check-box:checked::after {
+    content: '\2714';
     position: absolute;
     top: 50%;
     left: 50%;
