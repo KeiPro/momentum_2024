@@ -7,67 +7,67 @@
     <title>Momentum</title>
   </head>
   <body>
-    <div class="background-container"></div>
-    <main></main>
-    <div class="screen-center">
-      <div class="clock-container">
-        <span id="clock">00:00</span>
+    <div class="background-container">
+      <header id="weather-container">
+        <span></span>
+        <span></span>
+      </header>
+
+      <div class="screen-center">
+        <div class="clock-container">
+          <span id="clock">00:00</span>
+        </div>
+        <div class="login-greeting-container">
+          <div id="greeting-container" class="hidden">
+            <h1 id="greeting__text"></h1>
+            <button class="greeting-edit">
+              <i class="fa-regular fa-pen-to-square fa-2x"></i>
+            </button>
+          </div>
+          <form class="hidden" id="login-form">
+            <input
+              required
+              maxlength="30"
+              type="text"
+              placeholder="What is your name?"
+            />
+          </form>
+        </div>
       </div>
-      <div class="login-greeting-container">
-        <div id="greeting-container" class="hidden">
-          <h1 id="greeting__text"></h1>
-          <button class="greeting-edit">
+
+      <div class="main-goal-container">
+        <span class="main-goal-title"></span>
+        <form id="main-goal-form">
+          <input type="text" required />
+
+          <!-- 단순 텍스트 길이 측정용.  -->
+          <span class="main-goal__text-measure"></span>
+        </form>
+        <div class="main-goal-item hidden">
+          <input type="checkbox" class="check-box" />
+          <span class="main-goal hidden"></span>
+          <button class="main-goal-edit">
             <i class="fa-regular fa-pen-to-square fa-2x"></i>
           </button>
         </div>
-        <form class="hidden" id="login-form">
-          <input
-            required
-            maxlength="30"
-            type="text"
-            placeholder="What is your name?"
-          />
-        </form>
       </div>
-    </div>
 
-    <div class="main-goal-container">
-      <span class="main-goal-title"></span>
-      <form id="main-goal-form">
-        <input type="text" required />
-
-        <!-- 단순 텍스트 길이 측정용.  -->
-        <span class="main-goal__text-measure"></span>
-      </form>
-      <div class="main-goal-item hidden">
-        <input type="checkbox" class="check-box" />
-        <span class="main-goal hidden"></span>
-        <button class="main-goal-edit">
-          <i class="fa-regular fa-pen-to-square fa-2x"></i>
-        </button>
-      </div>
-    </div>
-
-    <div id="quote-container" class="hidden">
-      <span></span>
-      <span class="hidden"></span>
-    </div>
-
-    <div class="sub-to-do-list">
-      <span class="stdl__toggle">Todo</span>
-      <div class="to-do-list__container hidden">
-        <ul id="todo-list"></ul>
-        <div class="stdl__bottom">
-          <span class="stdl__add-button">
-            <i class="fa-solid fa-plus"></i>
-          </span>
+      <aside class="sub-to-do-list">
+        <span class="stdl__toggle">Todo</span>
+        <div class="to-do-list__container hidden">
+          <ul id="todo-list"></ul>
+          <div class="stdl__bottom">
+            <span class="stdl__add-button">
+              <i class="fa-solid fa-plus"></i>
+            </span>
+          </div>
         </div>
-      </div>
-    </div>
+      </aside>
 
-    <div id="weather-container">
-      <span></span>
-      <span></span>
+      <footer id="quote-container" class="hidden">
+        <span></span>
+        <span class="hidden"></span>
+      </footer>
     </div>
 
     <script
