@@ -5,4 +5,4 @@ const images = [
 
 const chosenImage = images[Math.floor(Math.random() * images.length)];
 const background = document.querySelector(".background-container");
-background.style.backgroundImage = `url(/img/${chosenImage})`;
+background.style.backgroundImage = `url(img/${chosenImage})`;
